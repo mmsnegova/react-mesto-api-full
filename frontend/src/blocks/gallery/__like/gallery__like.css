@@ -1,0 +1,21 @@
+.gallery__like {
+  width: 22px;
+  height: 19px;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+
+@media(hover: hover) and (pointer: fine) {
+  .gallery__like:hover {
+    opacity: 0.5;
+  }
+ }

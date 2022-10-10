@@ -1,0 +1,25 @@
+.popup__save_dark{
+    margin-top: 206px;
+    padding-bottom: 14px;
+    border: 1px solid #FFF;
+    background-color: #FFF;
+    color: #000;
+    transition: opacity 0.3s ease;
+}
+
+@media (max-width: 767px) {
+    .popup__save_dark {
+        font-size: 18px;
+        line-height: 22px;
+        margin-top: 163px;
+        font-size: 16px;
+        line-height: 19px;
+    }
+}
+
+@media(hover: hover) and (pointer: fine) {
+    .popup__save_dark:hover {
+      opacity: 0.85;
+    }
+}
+  

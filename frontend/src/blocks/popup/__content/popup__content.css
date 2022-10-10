@@ -1,0 +1,18 @@
+.popup__content {
+  width: 100%;
+  max-width: 430px;
+  background: white;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  color: black;
+  position: relative;
+  box-sizing: border-box;
+  padding: 34px 36px 37px;
+}
+
+@media (max-width: 767px) {
+  .popup__content {
+    padding: 25px 22px;
+  }
+}
+

@@ -1,0 +1,15 @@
+@media (max-width: 767px){
+    .header__menu-burger_click span {
+        opacity:0;
+        transition: opacity 0.3s;
+    }
+    .header__menu-burger_click:before {
+        top: 9px;
+        transform: rotate(-45deg);
+    }
+    .header__menu-burger_click:after {
+        bottom: 9px;
+        transform: rotate(45deg);
+    }
+
+}

@@ -1,0 +1,7 @@
+@media (max-width: 767px){
+  .header__nav_opened {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s, visibility 0s;
+  }
+}

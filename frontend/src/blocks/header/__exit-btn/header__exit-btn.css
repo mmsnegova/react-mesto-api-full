@@ -1,0 +1,13 @@
+.header__exit-btn {
+    background: none;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+@media(hover: hover) and (pointer: fine) {
+    .header__exit-btn:hover {
+      opacity: 0.6;
+    }
+}

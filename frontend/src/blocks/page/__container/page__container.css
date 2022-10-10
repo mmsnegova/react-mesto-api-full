@@ -1,0 +1,14 @@
+.page__container {
+  margin: 0 auto;
+  max-width: 880px;
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@media (max-width: 767px) {
+  .page__container {
+    padding: 0;
+  }
+}

@@ -1,0 +1,15 @@
+.popup__content_center {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    gap: 32px;
+}
+
+@media (max-width: 767px) {
+    .popup__content_center {
+      padding: 50px 18px;
+    }
+  }

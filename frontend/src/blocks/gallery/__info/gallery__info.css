@@ -1,0 +1,9 @@
+.gallery__info {
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+  padding: 0 20px 0 20px;
+  height: 79px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

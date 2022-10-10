@@ -1,0 +1,16 @@
+.profile__info {
+  max-width: 336px;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px 18px;
+}
+
+@media (max-width: 767px) {
+  .profile__info {
+    max-width: 282px;
+    gap: 14px 10px;
+    margin-bottom: 36px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,12 @@
+.authorization {
+    color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: calc(30px + 30px + 358px);
+    margin: 60px auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}

@@ -1,0 +1,15 @@
+.popup__input_dark{
+    background: none;
+    border-bottom: 2px solid #CCC;
+    color: #FFF;
+}
+
+.popup__body .input-container:first-of-type .popup__input_dark:first-of-type {
+    margin-top: 50px;
+  }
+  
+  @media (max-width: 767px) {
+    .popup__body .input-container:first-of-type .popup__input_dark:first-of-type {
+      margin-top: 40px;
+    }
+  }

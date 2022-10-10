@@ -1,0 +1,41 @@
+@media (max-width: 767px) {
+    .header__menu-burger {
+        position: relative;
+        width: 24px;
+        height: 21px;
+        display: block;
+        margin: 0;
+        cursor: pointer;
+        transition: opacity 0.3s ease;
+    }
+
+    .header__menu-burger span, .header__menu-burger:after, .header__menu-burger:before{
+        height: 3px;
+        width: 100%;
+        position: absolute;
+        background: #FFF;
+        margin: auto;
+    }
+    .header__menu-burger span{
+        top: 9px;
+        opacity: 1;
+        transition: opacity 0.5s;
+    }
+    .header__menu-burger:after, .header__menu-burger:before{
+        content: '';
+    }
+    .header__menu-burger:after{
+        bottom: 0;
+        transition: 0.3s;
+    }
+    .header__menu-burger:before{
+        top:0;
+        transition: 0.3s;
+    }
+}
+
+@media(hover: hover) and (pointer: fine) {
+    .header__menu-burger:hover {
+      opacity: 0.6;
+    }
+}
