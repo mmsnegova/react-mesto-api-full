@@ -18,7 +18,7 @@ const { regex, allowedCors } = require('./constants/constants');
 const { PORT = 3000 } = process.env;
 const app = express();
 
-app.options('*', cors());
+app.use('*', cors());
 
 /* app.use((req, res, next) => {
   const { origin } = req.headers;
