@@ -1,4 +1,4 @@
-export const BASE_URL = "http://api.mesto.mmsnegova.nomoredomains.icu/#/";
+export const BASE_URL = "http://api.mesto.mmsnegova.nomoredomains.icu";
 
 export const register = (password, email) => {
   return fetch(`${BASE_URL}/signup`, {
