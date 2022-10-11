@@ -13,22 +13,12 @@ const auth = require('./middlewares/auth');
 const NotFoundError = require('./errors/not-found-err');
 const error = require('./middlewares/error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { regex} = require('./constants/constants');
+const { regex, allowedCors } = require('./constants/constants');
 
 const { PORT = 3000 } = process.env;
-
 const app = express();
-app.use(cors());
-mongoose.connect('mongodb://localhost:27017/mestodb', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(requestLogger);
-
-/* app.use((req, res, next) => {
+app.use((req, res, next) => {
   const { origin } = req.headers;
   const { method } = req;
   const requestHeaders = req.headers['access-control-request-headers'];
@@ -44,7 +34,17 @@ app.use(requestLogger);
   }
   return next();
 });
- */
+
+mongoose.connect('mongodb://localhost:27017/mestodb', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(requestLogger);
+
+
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
