@@ -13,7 +13,7 @@ const auth = require('./middlewares/auth');
 const NotFoundError = require('./errors/not-found-err');
 const error = require('./middlewares/error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { regex, allowedCors } = require('./constants/constants');
+const { regex} = require('./constants/constants');
 
 const { PORT = 3000 } = process.env;
 
