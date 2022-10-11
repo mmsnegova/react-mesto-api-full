@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const { celebrate, Joi, errors } = require('celebrate');
+const cors = require('cors');
 const routerUsers = require('./routes/users');
 const routerCards = require('./routes/cards');
 const {
@@ -26,18 +27,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(requestLogger);
 
-/* app.use(cors({
+app.use(cors({
   origin: 'http://mesto.mmsnegova.nomoredomains.icu',
-})); */
+}));
 
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
   const { origin } = req.headers;
   const { method } = req;
   const requestHeaders = req.headers['access-control-request-headers'];
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
-    /* res.header('Access-Control-Allow-Credentials', true); */
+    res.header('Access-Control-Allow-Credentials', true);
   }
   if (method === 'OPTIONS') {
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
@@ -46,6 +47,7 @@ app.use((req, res, next) => {
   }
   return next();
 });
+ */
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
