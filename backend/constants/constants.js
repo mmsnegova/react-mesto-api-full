@@ -5,5 +5,5 @@ const allowedCors = ['http://mesto.mmsnegova.nomoredomains.icu']
 module.exports = {
   SALT_OR_ROUNDS,
   regex,
-  allowedCors
+  allowedCors,
 };
