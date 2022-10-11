@@ -130,7 +130,8 @@ export default function App() {
   function onLogin(password, email) {
     return auth
       .authorize(password, email)
-      .then(() => {
+      .then((res) => {
+        console.log(res)
         setLoggedIn(true);
         history.push("/");
       })
