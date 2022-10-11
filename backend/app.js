@@ -18,7 +18,11 @@ const { regex, allowedCors } = require('./constants/constants');
 const { PORT = 3000 } = process.env;
 const app = express();
 
-app.use((req, res, next) => {
+app.options('*', cors());
+app.del('*', cors(), (req, res, next) => {
+  res.json({ msg: 'This is CORS-enabled for all origins!' });
+});
+/* app.use((req, res, next) => {
   const { origin } = req.headers;
   const { method } = req;
   const requestHeaders = req.headers['access-control-request-headers'];
@@ -33,7 +37,7 @@ app.use((req, res, next) => {
     return res.end();
   }
   return next();
-});
+}); */
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
