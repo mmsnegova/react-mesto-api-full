@@ -27,9 +27,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(requestLogger);
 
-app.use(cors({
+app.use(cors(/* {
   origin: 'http://mesto.mmsnegova.nomoredomains.icu',
-}));
+} */));
 
 /* app.use((req, res, next) => {
   const { origin } = req.headers;
