@@ -20,6 +20,7 @@ import * as auth from "../utils/auth";
 export default function App() {
   const history = useHistory();
   const [loggedIn, setLoggedIn] = useState(false);
+  const [token, setToken] = useState(localStorage.getItem("token"));
   const [userData, setUserData] = useState({
     email: "email@mail.ru",
   });
@@ -38,7 +39,7 @@ export default function App() {
 
   React.useEffect(() => {
     if (loggedIn) {
-      Promise.all([api.getUserInfo(), api.getCards()])
+      Promise.all([api.getUserInfo(token), api.getCards(token)])
         .then(([userData, cards]) => {
           setCurrentUser(userData);
           setCards(cards);
@@ -88,13 +89,12 @@ export default function App() {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
     if (token) {
       auth.getContent(token).then((res) => {
         if (res) {
           setLoggedIn(true);
           setUserData({
-            email: res.data.email,
+            email: res.email,
           });
         }
       });
@@ -131,7 +131,7 @@ export default function App() {
     return auth
       .authorize(password, email)
       .then((res) => {
-        console.log(res)
+        setToken(res.token);
         setLoggedIn(true);
         history.push("/");
       })
@@ -143,17 +143,19 @@ export default function App() {
 
   function onSignOut() {
     localStorage.removeItem("token");
+    setToken(null)
     setLoggedIn(false);
     history.push("/sign-in");
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((id) => id === currentUser._id);
     api
-      .changeLikeCardStatus(card._id, !isLiked)
+      .changeLikeCardStatus(card._id, !isLiked, token)
       .then((newCard) => {
+        console.log(newCard)
         setCards((state) =>
-          state.map((c) => (c._id === card._id ? newCard : c))
+          state.map((c) => (c._id === card._id ? newCard.card : c))
         );
       })
       .catch((err) => {
@@ -163,7 +165,7 @@ export default function App() {
 
   function handleConformationCardDelete(card) {
     api
-      .deleteCard(card._id)
+      .deleteCard(card._id, token)
       .then(() => {
         setCards((state) => state.filter((c) => c !== card));
       })
@@ -174,7 +176,7 @@ export default function App() {
 
   function handleUpdateUser(userInfo) {
     api
-      .setUserInfo(userInfo)
+      .setUserInfo(userInfo, token)
       .then((res) => {
         setCurrentUser(res);
         closeAllPopups();
@@ -185,7 +187,7 @@ export default function App() {
   }
   function handleUpdateAvatar(link) {
     api
-      .setUserAvatar(link)
+      .setUserAvatar(link, token)
       .then((res) => {
         setCurrentUser(res);
         closeAllPopups();
@@ -197,7 +199,7 @@ export default function App() {
 
   function handleAddPlace({ name, link }) {
     api
-      .addCard({ name, link })
+      .addCard({ name, link }, token)
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();

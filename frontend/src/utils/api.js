@@ -1,7 +1,6 @@
 class Api {
-  constructor({ baseUrl, headers }) {
+  constructor({ baseUrl }) {
     this._baseUrl = baseUrl;
-    this._headers = headers;
   }
 
   _handleResponse(res) {
@@ -15,64 +14,81 @@ class Api {
     console.log(err);
   }
 
-  getUserInfo() {
+  getUserInfo(token) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
     }).then((res) => this._handleResponse(res));
   }
 
-  setUserInfo({ name, about }) {
+  setUserInfo({ name, about }, token) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ name, about }),
     }).then((res) => this._handleResponse(res));
   }
 
-  setUserAvatar({ avatar }) {
+  setUserAvatar({ avatar }, token) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ avatar }),
     }).then((res) => this._handleResponse(res));
   }
 
-  getCards() {
+  getCards(token) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
     }).then((res) => this._handleResponse(res));
   }
 
-  addCard({ name, link }) {
+  addCard({ name, link }, token) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ name, link }),
     }).then((res) => this._handleResponse(res));
   }
 
-  deleteCard(id) {
+  deleteCard(id, token) {
     return fetch(`${this._baseUrl}/cards/${id} `, {
       method: "DELETE",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
     }).then((res) => this._handleResponse(res));
   }
 
-  changeLikeCardStatus(id, like) {
+  changeLikeCardStatus(id, like, token) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: like ? "PUT" : "DELETE",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
     }).then((res) => this._handleResponse(res));
   }
 }
 
 const api = new Api({
-  baseUrl: "http://api.mesto.mmsnegova.nomoredomains.icu",
-  headers: {
-    authorization: "6858ce5a-0ca5-4508-bf3e-e6a0c057ab0d",
-    "Content-Type": "application/json",
-  },
+  baseUrl: "http://api.mesto.mmsnegova.nomoredomains.icu"
 });
 export default api;
