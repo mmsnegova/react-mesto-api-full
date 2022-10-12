@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -29,7 +30,6 @@ app.use((req, res, next) => {
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
-    /* res.header('Access-Control-Allow-Credentials', true); */
   }
   if (method === 'OPTIONS') {
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
