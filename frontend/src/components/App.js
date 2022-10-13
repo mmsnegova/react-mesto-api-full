@@ -153,7 +153,6 @@ export default function App() {
     api
       .changeLikeCardStatus(card._id, !isLiked, token)
       .then((newCard) => {
-        console.log(newCard)
         setCards((state) =>
           state.map((c) => (c._id === card._id ? newCard.card : c))
         );
