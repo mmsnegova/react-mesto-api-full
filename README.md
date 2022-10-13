@@ -30,5 +30,5 @@ Backend
 **Публикация проекта**
 
 - IP: 51.250.27.198
-- Frontend: https://mesto.mmsnegova.nomoredomains.icu [ссылка](https://mesto.mmsnegova.nomoredomains.icu)
-- Backend: https://api.mesto.mmsnegova.nomoredomains.icu [ссылка](https://api.mesto.mmsnegova.nomoredomains.icu)
+- Frontend: https://mesto.mmsnegova.nomoredomains.icu
+- Backend: https://api.mesto.mmsnegova.nomoredomains.icu
